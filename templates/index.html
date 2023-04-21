@@ -87,7 +87,9 @@
     <!-- BMI Result Container -->
     <div class="result-container" id="result-container">
       <p>Your BMI is <span id="bmi-value"></span></p>
+      <p><span id="bmi-emoji"></span></p>
     </div>
+
 
     <!-- JavaScript for Animation -->
     <script>
@@ -97,7 +99,19 @@
         var bmi = (weight / ((height / 100) ** 2)).toFixed(2);
         var resultContainer = document.getElementById("result-container");
         var bmiValue = document.getElementById("bmi-value");
+        var bmiEmoji = document.getElementById("bmi-emoji");
+
         bmiValue.textContent = bmi;
+        if (bmi < 18.5) {
+          bmiEmoji.textContent = "😔"; // underweight
+        } else if (bmi < 25) {
+          bmiEmoji.textContent = "😃"; // normal weight
+        } else if (bmi < 30) {
+          bmiEmoji.textContent = "😕"; // overweight
+        } else {
+          bmiEmoji.textContent = "😞"; // obese
+        }
+
         if (resultContainer.classList.contains("show")) {
           resultContainer.classList.remove("show");
         }
@@ -109,7 +123,8 @@
         setTimeout(function() {
           resultContainer.classList.remove("show");
         }, 5000);
-      }
+
+       }
     </script>
   </body>
 </html>
