@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BMI Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      input[type="number"] {
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      input[type="button"] {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="button"]:hover {
+        background-color: #555;
+      }
+
+      /* Animation */
+      .result-container {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      .result-container.show {
+        opacity: 1;
+      }
+
+      .result-container.hide {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BMI Calculator</h1>
+    <form id="bmi-form">
+      <label for="height">Height (cm):</label>
+      <input type="number" name="height" id="height" required>
+      <label for="weight">Weight (kg):</label>
+      <input type="number" name="weight" id="weight" required>
+      <input type="button" value="Calculate" onclick="calculateBMI()">
+    </form>
+
+    <!-- BMI Result Container -->
+    <div class="result-container" id="result-container">
+      <p>Your BMI is <span id="bmi-value"></span></p>
+    </div>
+
+    <!-- JavaScript for Animation -->
+    <script>
+      function calculateBMI() {
+        var height = document.getElementById("height").value;
+        var weight = document.getElementById("weight").value;
+        var bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+        var resultContainer = document.getElementById("result-container");
+        var bmiValue = document.getElementById("bmi-value");
+        bmiValue.textContent = bmi;
+        if (resultContainer.classList.contains("show")) {
+          resultContainer.classList.remove("show");
+        }
+        resultContainer.classList.add("hide");
+        setTimeout(function() {
+          resultContainer.classList.remove("hide");
+          resultContainer.classList.add("show");
+        }, 100);
+        setTimeout(function() {
+          resultContainer.classList.remove("show");
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
