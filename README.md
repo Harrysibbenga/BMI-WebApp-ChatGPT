@@ -1,7 +1,9 @@
-#BMI Calculator Web App
+# BMI Calculator Web App
+
 This is a simple web app built with Flask that allows users to calculate their Body Mass Index (BMI) based on their height and weight inputs.
 
-##Getting Started
+## Getting Started
+
 To run the app, you'll need to have Python 3 installed on your system. You can download it from the official website here.
 
 You'll also need to install the required packages listed in the requirements.txt file. To do so, navigate to the project directory and run:
